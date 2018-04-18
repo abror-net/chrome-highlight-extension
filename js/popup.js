@@ -70,13 +70,13 @@
 		chrome.storage.sync.set({
 			wordGroupsDict: wordGroupsDict
 		}, function () {
-			// console.log("wordGroupsDict saved");
+			console.log("wordGroupsDict saved");
 		});
 
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 			var messageBody = wordGroupsDict;
 			chrome.tabs.sendMessage(tabs[0].id, messageBody, function(response) {
-				// console.log(response.content);
+				console.log(response.content);
 			});
 		});
 	};
@@ -124,7 +124,7 @@
 		// use default for 1st time
 		var colorGroups = Object.keys(wordGroupsDict);
 		if (colorGroups.length === 0) {
-			colorGroups = ["C72E04", "FA9507", "CACF44", "27AB99"].slice(1);
+			colorGroups = ["48AEE9"].slice(0);
 			colorGroups.forEach( colorGroup => createNewGroupInDict(wordGroupsDict, colorGroup) );
 		}
 

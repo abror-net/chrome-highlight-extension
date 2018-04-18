@@ -91,12 +91,12 @@
 
 		// create wrapping i
 		var iNode = document.createElement("i");
-		var selectorName = iNode.className = "chrome-extension-highlight-".concat(bgColorCode);
-		iNode.classList.add("chrome-extension-highlight");
+		var selectorName = iNode.className = "namex-extension-".concat(bgColorCode);
+		iNode.classList.add("namex-extension");
 
 		// add highlight class style in CSS
 		if (!ruleExistenceDict[bgColorCode]) {
-			sheet.insertRule([".", selectorName, " { background: #", bgColorCode, " !important; }"].join(""), 0);
+			sheet.insertRule([".", selectorName, " { background: #", bgColorCode, " !important;", "color: #" , bgColorCode, " }"].join(""), 0);
 			ruleExistenceDict[bgColorCode] = true;
 			console.log(sheet);
 		}
@@ -154,7 +154,7 @@
 		// console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
 
 		// remove all highlight first
-		[].slice.call(document.getElementsByClassName("chrome-extension-highlight")).forEach(function (e) {
+		[].slice.call(document.getElementsByClassName("namex-extension")).forEach(function (e) {
 			var parentNode = e.parentNode;
 			while(e.firstChild) parentNode.insertBefore(e.firstChild, e);
 			parentNode.removeChild(e);
